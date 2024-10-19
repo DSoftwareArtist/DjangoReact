@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+{% block bodyclass %}page{%endblock%}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/page.css' %}">
+{% render_bundle 'page' 'css' %}
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    window.REACT_CONTEXT = JSON.parse("{{ react_context | escapejs }}");
+</script>
+{% render_bundle 'page' 'js' %}
+{% endblock %}
+
+{% block content %}
+<div  id="app">{{react_html|safe}}</div>
+{% endblock %}
+
