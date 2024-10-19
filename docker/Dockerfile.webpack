@@ -3,8 +3,6 @@ FROM ubuntu:focal
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
-ENV TIMEZONE Australia/Melbourne
-
 WORKDIR /frontend
 
 RUN echo "Updating apt sources." && apt-get -qq update
