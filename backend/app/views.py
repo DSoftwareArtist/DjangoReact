@@ -7,6 +7,7 @@ from .utils import render_react_page
 def landing(request):
     if request.method == 'GET':
         context = {
+            "message": "This is your landing page"
         }
         return render_react_page(
             request,

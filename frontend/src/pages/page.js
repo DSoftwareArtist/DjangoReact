@@ -2,9 +2,10 @@ import React from "react";
 import { Test } from "comps";
 import { mount } from "utils";
 
-export const getApp = () => {
+export const getApp = ({message}) => {
   const App = () => {
     return <div className="container">
+      { message }
       <Test></Test>
     </div>
   };

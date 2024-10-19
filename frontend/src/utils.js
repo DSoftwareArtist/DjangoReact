@@ -1,12 +1,17 @@
 import React from "react";
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 
 export const mount = (App, rootId) => {
   const domNode = document.getElementById(rootId);
-  const root = createRoot(domNode);
-  if (root.hasChildNodes()) {
-    root.hydrate(<App />, root);
+  if (!domNode) {
+    console.error(`No element found with id "${rootId}"`);
+    return;
+  }
+
+  if (domNode.hasChildNodes()) {
+    hydrateRoot(domNode, <App />);
   } else {
+    const root = createRoot(domNode);
     root.render(<App />);
   }
 };
